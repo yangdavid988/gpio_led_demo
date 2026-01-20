@@ -1,6 +1,6 @@
-# Ameba RTL8721Dx GPIO 控制LED实现1s 流水显示示例（free_rtos）
 * [English Version](./README.md)
 
+### Ameba RTL8721Dx GPIO 控制LED实现1s 流水显示示例（free_rtos）
 
 这是一个基于 RTL8721Dx 系列 SoC 的“LED GPIO控制”示例。该程序展示通过GPIO 配置io输出让LED 灯闪烁的效果，因为EVB上面板载对应sRGB 灯的pin与GPIO对应IO相同，所以即使不连接外部LED 灯珠，从EVB板载LED上面也可以看到效果。
 
@@ -54,51 +54,59 @@
 
  ```bash
  log：
-2026-01-12 18:00:45.885 This is a "hello world" from app_main function!
-2026-01-12 18:00:45.885 [app_main-A] (RTK_LOG_ALWAYS),hello world!
-2026-01-12 18:00:45.885 [app_main-E] (RTK_LOG_ERROR),hello world!
-2026-01-12 18:00:45.885 [app_main-W] (RTK_LOG_WARN),hello world!
-2026-01-12 18:00:45.885 [app_main-I] (RTK_LOG_INFO),hello world!
-2026-01-12 18:00:45.885 [MAIN-I] KM4 START SCHEDULER 
-2026-01-12 18:00:45.885 interface 0 is initialized
-2026-01-12 18:00:45.885 interface 1 is initialized
-2026-01-12 18:00:45.885 [WLAN-I] LWIP consume heap 1312
-2026-01-12 18:00:45.885 [app_example-I] Waiting for wifi ready!
-2026-01-12 18:00:45.885 Wait for WiFi and DHCP Connect Success...
-2026-01-12 18:00:45.885 Please use AT+WLCONN to connect AP first time
-2026-01-12 18:00:45.885 [WLAN-A] Init WIFI
-2026-01-12 18:00:45.895 [WLAN-A] Band=2.4G&5G
-2026-01-12 18:00:45.925 [WLAN-I] NP consume heap 20336
-2026-01-12 18:00:45.925 [WLAN-A] set ssid Xiaomi_Pro_2G
-2026-01-12 18:00:46.096 [WLAN-A] start auth to 50:64:2b:34:88:9e
-2026-01-12 18:00:46.137 [WLAN-A] auth success, start assoc
-2026-01-12 18:00:46.177 [WLAN-A] assoc success(2)
-2026-01-12 18:00:46.389 [app_example-I] Waiting for wifi ready!
-2026-01-12 18:00:46.893 [app_example-I] Waiting for wifi ready!
-2026-01-12 18:00:46.893 Wait for WiFi and DHCP Connect Success...
-2026-01-12 18:00:46.893 Please use AT+WLCONN to connect AP first time
-2026-01-12 18:00:47.386 [app_example-I] Waiting for wifi ready!
-2026-01-12 18:00:47.890 [app_example-I] Waiting for wifi ready!
-2026-01-12 18:00:47.890 Wait for WiFi and DHCP Connect Success...
-2026-01-12 18:00:47.890 Please use AT+WLCONN to connect AP first time
-2026-01-12 18:00:48.323 [WLAN-A] set pairwise key 4(WEP40-1 WEP104-5 TKIP-2 AES-4 GCMP-15)
-2026-01-12 18:00:48.323 [WLAN-A] set group key 4 1
-2026-01-12 18:00:48.323 [WLAN-I] set cam: gtk alg 4 0
-2026-01-12 18:00:48.323 [$]wifi connected
-2026-01-12 18:00:48.383 [app_example-I] Waiting for wifi ready!
-2026-01-12 18:00:48.887 [app_example-I] Waiting for wifi ready!
-2026-01-12 18:00:48.887 Wait for WiFi and DHCP Connect Success...
-2026-01-12 18:00:48.887 Please use AT+WLCONN to connect AP first time
-2026-01-12 18:00:49.401 [app_example-I] Waiting for wifi ready!
-2026-01-12 18:00:49.401 [$]wifi got ip:"192.168.32.39"
-2026-01-12 18:00:49.401 wtn dhcp success
-2026-01-12 18:00:49.401 [WLAN-I] AP consume heap 11832
-2026-01-12 18:00:49.401 [WLAN-I] Available heap after wifi init 321952
-2026-01-12 18:00:49.904 [app_example-I] Waiting for wifi ready!
-2026-01-12 18:00:50.408 [app_example-I] Hello world!
-2026-01-12 18:00:51.424 [app_example-I] Hello world!
-2026-01-12 18:00:52.421 [app_example-I] Hello world!
-2026-01-12 18:00:53.427 [app_example-I] Hello world!
-2026-01-12 18:00:54.413 [app_example-I] Hello world!
-2026-01-12 18:00:55.430 [app_example-I] Hello world!
+14:02:16.036  ROM:[V1.1]
+14:02:16.051  FLASH RATE:1, Pinmux:1
+14:02:16.051  IMG1(OTA1) VALID, ret: 0
+14:02:16.051  IMG1 ENTRY[f80078d:0]
+14:02:16.051  [BOOT-I] KM4 BOOT REASON 0: Initial Power on
+14:02:16.051  [BOOT-I] KM4 CPU CLK: 240000000 Hz
+14:02:16.051  [BOOT-I] KM0 CPU CLK: 96000000 Hz
+14:02:16.051  [BOOT-I] PSRAM Ctrl CLK: 240000000 Hz 
+14:02:16.051  [BOOT-I] IMG1 ENTER MSP:[30009FDC]
+14:02:16.051  [BOOT-I] Build Time: Jan 20 2026 14:01:20
+14:02:16.051  [BOOT-I] IMG1 SECURE STATE: 1
+14:02:16.051  [FLASH-I] FLASH CLK: 80000000 Hz
+14:02:16.051  [FLASH-I] Flash ID: 85-20-16 (Capacity: 32M-bit)
+14:02:16.051  [FLASH-I] Flash Read 4IO
+14:02:16.051  [FLASH-I] FLASH HandShake[0x2 OK]
+14:02:16.066  [BOOT-I] KM0 XIP IMG[0c000000:79e0]
+14:02:16.066  [BOOT-I] KM0 SRAM[20068000:860]
+14:02:16.066  [BOOT-I] KM0 PSRAM[0c008240:20]
+14:02:16.066  [BOOT-I] KM0 ENTRY[20004d00:60]
+14:02:16.066  [BOOT-I] KM4 XIP IMG[0e000000:17b20]
+14:02:16.066  [BOOT-I] KM4 SRAM[2000b000:460]
+14:02:16.071  [BOOT-I] KM4 PSRAM[0e017f80:20]
+14:02:16.071  [BOOT-I] KM4 ENTRY[20004d80:40]
+14:02:16.071  [BOOT-I] IMG2 BOOT from OTA 1, Version: 1.1 
+14:02:16.071  [BOOT-I] Image2Entry @ 0xe0076b5 ...
+14:02:16.071  [APP-I] [KM4 APP LOCKS-I]START 
+14:02:16.071   KM0 ini[APP-I] t_retargVTOR: 30et_locks007000, VTOR_NS:
+14:02:16.071  30007000
+14:02:16.071  [APP-I] VTOR: 30007000, VTOR_NS:30007000
+14:02:16.071  [APP-I] IMG2 [MAIN-I]SECURE S IWDG reTATE: 1
+14:02:16.071  fresh on!
+14:02:16.071  [MAIN-I] KM0 OS START 
+14:02:16.071  [CLK-I] [CAL4M]: delta:1 target:320 PPM: 3125 PPM_Limit:30000 
+14:02:16.072  [CLK-I] [CAL131K]: delta:11 target:2441 PPM: 4506 PPM_Limit:30000 
+14:02:16.072  [LOCKS-I] KM4 init_retarget_locks
+14:02:16.072  [APP-I] BOR arises when supply voltage decreases under 2.57V and recovers above 2.7V.
+14:02:16.072  [MAIN-I] KM4 MAIN 
+14:02:16.072  [VER-I] AMEBA-RTOS SDK VERSION: 1.2.0
+14:02:16.087  [MAIN-I] File System Init Success 
+14:02:16.087  [app_main-I] gpio_led_demo start!
+14:02:16.087  gpio_led_setup ready!
+14:02:19.077  [MAIN-I] KM4 START SCHEDULER 
+14:02:22.082  ==> LED toggle count:1
+14:02:25.080  ==> LED toggle count:2
+14:02:28.083  ==> LED toggle count:3
+14:02:31.086  ==> LED toggle count:4
+14:02:34.088  ==> LED toggle count:5
+14:02:37.093  ==> LED toggle count:6
+14:02:40.094  ==> LED toggle count:7
+14:02:43.093  ==> LED toggle count:8
+14:02:46.098  ==> LED toggle count:9
+14:02:49.100  ==> LED toggle count:10
+14:02:52.102  ==> LED toggle count:11
+14:02:55.106  ==> LED toggle count:12
+
  ```

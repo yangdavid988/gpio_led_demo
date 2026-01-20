@@ -1,110 +1,111 @@
-# Hello World example for Ameba RTL8721Dx Series SoC（free_rtos）
 * [中文版](./README_CN.md)
 
+### RTL8721Dx GPIO Control LED Example (FreeRTOS)
 
-This is a "Hello World" program based on the RTL8721Dx series SoC. It demonstrates the effects of different log levels in the system and checks WiFi connectivity and IP acquisition via DHCP.
+🔹 This is an example demonstrating how to use the RTL8721Dx series SoC for LED control. The program configures GPIO ports to let the LED blink at 1-second intervals. Since the development board has built-in LEDs, you can directly observe the effect.
 
-* [EVB 链接](https://item.taobao.com/item.htm?id=904981157046)
-* [IC](https://riot.realmcu.com/cn/module/index.html)
+- 📎 [EVB Purchase Link](https://item.taobao.com/item.htm?id=904981157046)
+- 📄 [Chip Details](https://riot.realmcu.com/cn/module/index.html)
 
-## Features
+### Features
 
-- Automatically prints system event logs at different levels during initialization.
-- Prints "Hello World" every second after successfully connecting to WiFi and obtaining an IP address.
-- Pauses message printing if the WiFi connection is lost and resumes once it is restored.
+✅ Initialize GPIO PA14/PA15/PA16  
+✅ After initialization, GPIO output is high for 1 second where all three LEDs light up and then turn off  
+✅ Modify GPIO output every 1 second to create a flowing LED effect
 
-## Working Principle
+### Quick Start
 
-1. **Log Levels**: Displays logs of various levels (such as info, warning, error) during program initialization.
-2. **WiFi Connection**: The system attempts to connect to WiFi and obtain an IP address.
-3. **Message Loop**: Two threads are started in the program: thread 1 listens for the IP address, and thread 2 prints "Hello World".
-4. **WiFi Disconnection**: When WiFi is disconnected, the printing of "Hello World" is paused and resumes after reconnection.
+1️⃣ **Select SDK**
+   - Set `env.sh` (`env.bat`) path: `source {sdk}/env.sh`
+   - Replace `{sdk}` with the absolute path to the [ameba-rtos SDK](https://github.com/Ameba-AIoT/ameba-rtos) root directory.
 
-## Quick Start
+2️⃣ **Build**
+   ```bash
+   source env.sh
+   ameba.py build
+   ```
 
-1. **Select SDK**
-   - Set the path for `env.sh` (`env.bat`): `source {sdk}/env.sh`
-   - Replace `{sdk}` with the absolute path to `env.sh` in the root directory of the [ameba-rtos SDK](https://github.com/Ameba-AIoT/ameba-rtos). This step only needs to be performed once if the SDK path remains unchanged.
-
-2. **Compile**
-   - Execute the following in the HELLO_WORLD root directory:
-     ```bash
-     source env.sh
-     ameba.py build
-     ```
-
-3. **Flash Burning**
+3️⃣ **Flash**
    ```bash
    ameba.py flash --p COMx --image km4_boot_all.bin 0x08000000 0x8014000 --image km0_km4_app.bin 0x08014000 0x8200000
    ```
-   **Note**: Precompiled bin files are provided in the project directory, which can be directly flashed using:
+   ⚠️ Note: Pre-compiled bin files provided in the project directory can also be flashed as follows:
    ```bash
    ameba.py flash --p COMx --image ../km4_boot_all.bin 0x08000000 0x8014000 --image ../km0_km4_app.bin 0x08014000 0x8200000
    ```
 
-4. **Monitor**
-   - `ameba.py monitor --port COM5 --b 1500000`
+4️⃣ **Monitor**
+   - Use `ameba.py monitor --port COMx --b 1500000`
 
-5. **Connect to WiFi**
-   - Use AT commands to connect to WiFi. Refer to [AT+WLCONN](https://riot.realmcu.com/cn/latest/rtos/atcmd/at_command_wifi.html#at-wlconn) for details.
+5️⃣ **Connect WiFi**
+   - Connect to WiFi using AT commands, see [AT+WLCONN](https://riot.realmcu.com/cn/latest/rtos/atcmd/at_command_wifi.html#at-wlconn)
    - Example: `AT+WLCONN=ssid,Xiaomi_Pro_2G,pw,12345678`
 
-6. **Observe Log Outputs**
+6️⃣ **Observe Log Output**
 
-7. **Reboot the AP and observe log outputs**
+7️⃣ **Power Cycle AP, Observe Log Output**
 
-8. **Press the RESET button on the development board and observe automatic WiFi reconnection**
-
+8️⃣ **Press RESET Button on the Board, Observe WiFi Auto-reconnect**
 
 ---
 
- ```bash
- log：
-2026-01-12 18:00:45.885 This is a "hello world" from app_main function!
-2026-01-12 18:00:45.885 [app_main-A] (RTK_LOG_ALWAYS),hello world!
-2026-01-12 18:00:45.885 [app_main-E] (RTK_LOG_ERROR),hello world!
-2026-01-12 18:00:45.885 [app_main-W] (RTK_LOG_WARN),hello world!
-2026-01-12 18:00:45.885 [app_main-I] (RTK_LOG_INFO),hello world!
-2026-01-12 18:00:45.885 [MAIN-I] KM4 START SCHEDULER 
-2026-01-12 18:00:45.885 interface 0 is initialized
-2026-01-12 18:00:45.885 interface 1 is initialized
-2026-01-12 18:00:45.885 [WLAN-I] LWIP consume heap 1312
-2026-01-12 18:00:45.885 [app_example-I] Waiting for wifi ready!
-2026-01-12 18:00:45.885 Wait for WiFi and DHCP Connect Success...
-2026-01-12 18:00:45.885 Please use AT+WLCONN to connect AP first time
-2026-01-12 18:00:45.885 [WLAN-A] Init WIFI
-2026-01-12 18:00:45.895 [WLAN-A] Band=2.4G&5G
-2026-01-12 18:00:45.925 [WLAN-I] NP consume heap 20336
-2026-01-12 18:00:45.925 [WLAN-A] set ssid Xiaomi_Pro_2G
-2026-01-12 18:00:46.096 [WLAN-A] start auth to 50:64:2b:34:88:9e
-2026-01-12 18:00:46.137 [WLAN-A] auth success, start assoc
-2026-01-12 18:00:46.177 [WLAN-A] assoc success(2)
-2026-01-12 18:00:46.389 [app_example-I] Waiting for wifi ready!
-2026-01-12 18:00:46.893 [app_example-I] Waiting for wifi ready!
-2026-01-12 18:00:46.893 Wait for WiFi and DHCP Connect Success...
-2026-01-12 18:00:46.893 Please use AT+WLCONN to connect AP first time
-2026-01-12 18:00:47.386 [app_example-I] Waiting for wifi ready!
-2026-01-12 18:00:47.890 [app_example-I] Waiting for wifi ready!
-2026-01-12 18:00:47.890 Wait for WiFi and DHCP Connect Success...
-2026-01-12 18:00:47.890 Please use AT+WLCONN to connect AP first time
-2026-01-12 18:00:48.323 [WLAN-A] set pairwise key 4(WEP40-1 WEP104-5 TKIP-2 AES-4 GCMP-15)
-2026-01-12 18:00:48.323 [WLAN-A] set group key 4 1
-2026-01-12 18:00:48.323 [WLAN-I] set cam: gtk alg 4 0
-2026-01-12 18:00:48.323 [$]wifi connected
-2026-01-12 18:00:48.383 [app_example-I] Waiting for wifi ready!
-2026-01-12 18:00:48.887 [app_example-I] Waiting for wifi ready!
-2026-01-12 18:00:48.887 Wait for WiFi and DHCP Connect Success...
-2026-01-12 18:00:48.887 Please use AT+WLCONN to connect AP first time
-2026-01-12 18:00:49.401 [app_example-I] Waiting for wifi ready!
-2026-01-12 18:00:49.401 [$]wifi got ip:"192.168.32.39"
-2026-01-12 18:00:49.401 wtn dhcp success
-2026-01-12 18:00:49.401 [WLAN-I] AP consume heap 11832
-2026-01-12 18:00:49.401 [WLAN-I] Available heap after wifi init 321952
-2026-01-12 18:00:49.904 [app_example-I] Waiting for wifi ready!
-2026-01-12 18:00:50.408 [app_example-I] Hello world!
-2026-01-12 18:00:51.424 [app_example-I] Hello world!
-2026-01-12 18:00:52.421 [app_example-I] Hello world!
-2026-01-12 18:00:53.427 [app_example-I] Hello world!
-2026-01-12 18:00:54.413 [app_example-I] Hello world!
-2026-01-12 18:00:55.430 [app_example-I] Hello world!
- ```# GPIO_LED_DEMO
+### Log Example
+
+```bash
+log：
+14:02:16.036  ROM:[V1.1]
+14:02:16.051  FLASH RATE:1, Pinmux:1
+14:02:16.051  IMG1(OTA1) VALID, ret: 0
+14:02:16.051  IMG1 ENTRY[f80078d:0]
+14:02:16.051  [BOOT-I] KM4 BOOT REASON 0: Initial Power on
+14:02:16.051  [BOOT-I] KM4 CPU CLK: 240000000 Hz
+14:02:16.051  [BOOT-I] KM0 CPU CLK: 96000000 Hz
+14:02:16.051  [BOOT-I] PSRAM Ctrl CLK: 240000000 Hz 
+14:02:16.051  [BOOT-I] IMG1 ENTER MSP:[30009FDC]
+14:02:16.051  [BOOT-I] Build Time: Jan 20 2026 14:01:20
+14:02:16.051  [BOOT-I] IMG1 SECURE STATE: 1
+14:02:16.051  [FLASH-I] FLASH CLK: 80000000 Hz
+14:02:16.051  [FLASH-I] Flash ID: 85-20-16 (Capacity: 32M-bit)
+14:02:16.051  [FLASH-I] Flash Read 4IO
+14:02:16.051  [FLASH-I] FLASH HandShake[0x2 OK]
+14:02:16.066  [BOOT-I] KM0 XIP IMG[0c000000:79e0]
+14:02:16.066  [BOOT-I] KM0 SRAM[20068000:860]
+14:02:16.066  [BOOT-I] KM0 PSRAM[0c008240:20]
+14:02:16.066  [BOOT-I] KM0 ENTRY[20004d00:60]
+14:02:16.066  [BOOT-I] KM4 XIP IMG[0e000000:17b20]
+14:02:16.066  [BOOT-I] KM4 SRAM[2000b000:460]
+14:02:16.071  [BOOT-I] KM4 PSRAM[0e017f80:20]
+14:02:16.071  [BOOT-I] KM4 ENTRY[20004d80:40]
+14:02:16.071  [BOOT-I] IMG2 BOOT from OTA 1, Version: 1.1 
+14:02:16.071  [BOOT-I] Image2Entry @ 0xe0076b5 ...
+14:02:16.071  [APP-I] [KM4 APP LOCKS-I]START 
+14:02:16.071   KM0 ini[APP-I] t_retargVTOR: 30et_locks007000, VTOR_NS:
+14:02:16.071  30007000
+14:02:16.071  [APP-I] VTOR: 30007000, VTOR_NS:30007000
+14:02:16.071  [APP-I] IMG2 [MAIN-I]SECURE S IWDG reTATE: 1
+14:02:16.071  fresh on!
+14:02:16.071  [MAIN-I] KM0 OS START 
+14:02:16.071  [CLK-I] [CAL4M]: delta:1 target:320 PPM: 3125 PPM_Limit:30000 
+14:02:16.072  [CLK-I] [CAL131K]: delta:11 target:2441 PPM: 4506 PPM_Limit:30000 
+14:02:16.072  [LOCKS-I] KM4 init_retarget_locks
+14:02:16.072  [APP-I] BOR arises when supply voltage decreases under 2.57V and recovers above 2.7V.
+14:02:16.072  [MAIN-I] KM4 MAIN 
+14:02:16.072  [VER-I] AMEBA-RTOS SDK VERSION: 1.2.0
+14:02:16.087  [MAIN-I] File System Init Success 
+14:02:16.087  [app_main-I] gpio_led_demo start!
+14:02:16.087  gpio_led_setup ready!
+14:02:19.077  [MAIN-I] KM4 START SCHEDULER 
+14:02:22.082  ==> LED toggle count:1
+14:02:25.080  ==> LED toggle count:2
+14:02:28.083  ==> LED toggle count:3
+14:02:31.086  ==> LED toggle count:4
+14:02:34.088  ==> LED toggle count:5
+14:02:37.093  ==> LED toggle count:6
+14:02:40.094  ==> LED toggle count:7
+14:02:43.093  ==> LED toggle count:8
+14:02:46.098  ==> LED toggle count:9
+14:02:49.100  ==> LED toggle count:10
+14:02:52.102  ==> LED toggle count:11
+14:02:55.106  ==> LED toggle count:12
+
+```
