@@ -2,32 +2,44 @@
 
 ### Ameba RTL8721Dx GPIO 控制LED实现1s 流水显示示例（free_rtos）
 
-这是一个基于 RTL8721Dx 系列 SoC 的“LED GPIO控制”示例。该程序展示通过GPIO 配置io输出让LED 灯闪烁的效果，因为EVB上面板载对应sRGB 灯的pin与GPIO对应IO相同，所以即使不连接外部LED 灯珠，从EVB板载LED上面也可以看到效果。
+🔹 这是一个基于 RTL8721Dx 系列 SoC 的“LED GPIO控制”示例。该程序展示通过GPIO  配置io输出让LED 灯闪烁的效果，因为EVB上面板载对应sRGB 灯的pin与GPIO对应IO相同，所以即使不连接外部LED 灯珠，从EVB板载LED上面也可以看到效果。
 
-* [EVB 链接](https://item.taobao.com/item.htm?id=904981157046)
-* [IC](https://riot.realmcu.com/cn/module/index.html)
+- 📎 [开发板购买链接](https://item.taobao.com/item.htm?id=904981157046)
+- 📄 [芯片详情](https://riot.realmcu.com/cn/module/index.html)
+- 📚 [GPIO Document](https://aiot.realmcu.com/cn/latest/rtos/peripherals/gpio/index.html)
 
-## 功能
-
-- 程序初始化GPIO，PA14/PA15/PA16
-- 初始化成功后GPIO拉高1s，3个LED 全亮，然后灭掉
-- 每1s修改一次GPIO的输出，实现LED 流水闪烁
+### 功能特点
+✅ 初始化GPIOs —— PA14/PA15/PA16/
+✅ 初始化后，程序配置GPIO端口让LED以固定的时间间隔闪烁。   
 
 
-## 快速开始
+### 搭建硬件环境
 
-1. **选择 SDK**
+1️⃣ **所需组件**
+   - 3个LED 
+    ⚠️ 开发板上有内置LED，您可以直接观察效果。
+
+2️⃣ **连接导线**
+   - 将LED分别连接到 
+      - `LED1_PIN(_PA_14)//绿色`   
+      - `LED2_PIN(_PA_15)//红色` 
+      - `LED3_PIN(_PA_16)//蓝色` 
+      - 和 `GND`
+
+### 快速开始
+
+1️⃣ **初始化SDK环境**
    - 设定 `env.sh` (`env.bat`) 路径：`source {sdk}/env.sh`
    - 将 `{sdk}` 替换为[ameba-rtos SDK](https://github.com/Ameba-AIoT/ameba-rtos) 根目录下 `env.sh` 的绝对路径。SDK 路径不变时，该步骤仅需执行一次。
 
-2. **编译**
+2️⃣ **编译**
    - 在当前example repository根目录下执行：
      ```bash
      source env.sh
      ameba.py build
      ```
 
-3. **烧录 Flash**
+3️⃣ **烧录 Flash**
    ```bash
    ameba.py flash --p COMx --image km4_boot_all.bin 0x08000000 0x8014000 --image km0_km4_app.bin 0x08014000 0x8200000
    ```
@@ -36,21 +48,14 @@
    ameba.py flash --p COMx --image ../km4_boot_all.bin 0x08000000 0x8014000 --image ../km0_km4_app.bin 0x08014000 0x8200000
    ```
 
-4. **监控**
+4️⃣ **打开串口监视**
    - `ameba.py monitor --port COMx --b 1500000`
 
-5. **连接 WiFi**
-   - 使用 AT 指令连接 WiFi，具体参考 [AT+WLCONN](https://riot.realmcu.com/cn/latest/rtos/atcmd/at_command_wifi.html#at-wlconn)
-   - 示例：`AT+WLCONN=ssid,Xiaomi_Pro_2G,pw,12345678`
+5️⃣ **点击EVB RST按钮后，观察日志输出**
 
-6. **观察日志输出**
-
-7. **AP 重新上下电，观察日志输出**
-
-8. **点击开发板上的RESET按钮，观察 WiFi 自动重连**
 
 ---
-
+### 日志示例
 
  ```bash
  log：

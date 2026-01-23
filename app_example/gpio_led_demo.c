@@ -1,5 +1,26 @@
 #include "gpio_led_demo.h"
 
+// @brief  GPIO Init Structure Definition
+  
+// typedef struct {
+// 	u32 GPIO_Mode;			/*!< Specifies the operating mode for the selected pins.
+// 								This parameter can be a value of @ref GPIO_Mode */
+
+// 	u32 GPIO_PuPd;			/*!< Specifies the operating Pull-up/Pull down for the selected pins.
+// 								This parameter can be a value of @ref GPIO_Pull_Type */
+
+// 	u32 GPIO_ITTrigger;		/*!< Specifies interrupt mode is level or edge trigger
+// 								This parameter can be a value of @ref GPIO_INT_Trigger_Type */
+
+// 	u32 GPIO_ITPolarity;	/*!< Specifies interrupt mode is high or low active trigger
+// 								This parameter can be a value of @ref GPIO_INT_Polarity_Type */
+
+// 	u32 GPIO_ITDebounce;	/*!< Specifies enable or disable de-bounce for interrupt
+// 								This parameter can be a value of @ref GPIO_INT_Debounce_Type*/
+
+// 	u32 GPIO_Pin;			/*!< Specifies the selected pins.
+// 								This parameter contains two parts: Pin[7:5]: port number; Pin[4:0]: pin number */
+// } GPIO_InitTypeDef; 
 
 void gpio_led_init()
 {    
@@ -32,6 +53,7 @@ void gpio_led_init()
     GPIO_WriteBit(LED1_PIN, 0);
     GPIO_WriteBit(LED2_PIN, 0);
     GPIO_WriteBit(LED3_PIN, 0); 
+    rtos_time_delay_ms(2000);   
     return;
 }
 
@@ -55,6 +77,5 @@ void gpio_led_toggle()
         GPIO_WriteBit(LED3_PIN, 0);
         printf("==> LED toggle count:%d\r\n", ++i);   
     }    
-   
-    return;
+    rtos_task_delete(NULL);
 }

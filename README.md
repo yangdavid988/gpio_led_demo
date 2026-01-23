@@ -2,20 +2,34 @@
 
 ### RTL8721Dx GPIO Control LED Example (FreeRTOS)
 
-🔹 This is an example demonstrating how to use the RTL8721Dx series SoC for LED control. The program configures GPIO ports to let the LED blink at 1-second intervals. Since the development board has built-in LEDs, you can directly observe the effect.
+🔹 This is an example demonstrating how to use the RTL8721Dx series SoC for LED control. The program configures GPIO ports to let the LED blink at 1-second intervals. 
+  
 
 - 📎 [EVB Purchase Link](https://item.taobao.com/item.htm?id=904981157046)
 - 📄 [Chip Details](https://riot.realmcu.com/cn/module/index.html)
+- 📚 [GPIO Document](https://aiot.realmcu.com/cn/latest/rtos/peripherals/gpio/index.html)
 
 ### Features
 
-✅ Initialize GPIO PA14/PA15/PA16  
+✅ Initialize GPIOs —— PA14/PA15/PA16
 ✅ After initialization, GPIO output is high for 1 second where all three LEDs light up and then turn off  
 ✅ Modify GPIO output every 1 second to create a flowing LED effect
 
+### set up the hardware environment
+1️⃣ **Requirement Components**
+   - 3 LEDs
+    ⚠️ The EVB board has built-in LEDs, you can directly observe the effect.
+
+2️⃣ **Connect wires**
+   - Connect LEDs to 
+      - `LED1_PIN(_PA_14)//Green`   
+      - `LED2_PIN(_PA_15)//Red` 
+      - `LED3_PIN(_PA_16)//Blue` 
+      - and `GND`
+
 ### Quick Start
 
-1️⃣ **Select SDK**
+1️⃣ **Select SDK Env**
    - Set `env.sh` (`env.bat`) path: `source {sdk}/env.sh`
    - Replace `{sdk}` with the absolute path to the [ameba-rtos SDK](https://github.com/Ameba-AIoT/ameba-rtos) root directory.
 
@@ -37,15 +51,7 @@
 4️⃣ **Monitor**
    - Use `ameba.py monitor --port COMx --b 1500000`
 
-5️⃣ **Connect WiFi**
-   - Connect to WiFi using AT commands, see [AT+WLCONN](https://riot.realmcu.com/cn/latest/rtos/atcmd/at_command_wifi.html#at-wlconn)
-   - Example: `AT+WLCONN=ssid,Xiaomi_Pro_2G,pw,12345678`
-
-6️⃣ **Observe Log Output**
-
-7️⃣ **Power Cycle AP, Observe Log Output**
-
-8️⃣ **Press RESET Button on the Board, Observe WiFi Auto-reconnect**
+5️⃣ **Press RESET Button on the EVB Board and observe log output**
 
 ---
 
