@@ -9,9 +9,9 @@
 
 
 //定义三个gpio对应的evb pin idex
-#define LED1_PIN _PA_14
-#define LED2_PIN _PA_15
-#define LED3_PIN _PA_16
+#define LED1_PIN _PA_14 //G
+#define LED2_PIN _PA_15 //R
+#define LED3_PIN _PA_16 //B
 
 void gpio_led_init(void);
 void gpio_led_toggle(void);
