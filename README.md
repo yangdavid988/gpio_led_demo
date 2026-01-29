@@ -5,7 +5,7 @@
 🔹 This is an example demonstrating how to use the RTL8721Dx series SoC for LED control. The program configures GPIO ports to let the LED blink at 1-second intervals. 
   
 
-- 📎 [EVB Purchase Link](https://item.taobao.com/item.htm?id=904981157046)
+- 📎 EVB Link [🛒 淘宝](https://item.taobao.com/item.htm?id=904981157046)   |[📦 Amazon](https://www.amazon.com/-/zh/dp/B0FB33DT2C/)
 - 📄 [Chip Details](https://riot.realmcu.com/cn/module/index.html)
 - 📚 [GPIO Document](https://aiot.realmcu.com/cn/latest/rtos/peripherals/gpio/index.html)
 
