@@ -31,6 +31,7 @@ jobs:
       - name: Push to Gitee only       
         run: |  
           continue-on-error: true
+          ls -al          
           git add .
           git commit -m "automated sync from github"
           git push gitee HEAD:refs/heads/main --force-with-lease         
