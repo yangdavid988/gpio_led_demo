@@ -2,11 +2,6 @@ name: Sync to Gitee
 on:
   push:
     branches: [main]
-  schedule:
-    # 每天北京时间9点运行 
-    - cron: '0 1 * * *'
-  workflow_dispatch:
-    # 手动触发同步
 
 jobs:
   repo-sync:
@@ -23,15 +18,14 @@ jobs:
       - name: Get REPO_NAME
         run: echo "REPO_NAME=$(echo ${{ github.repository }} | cut -d'/' -f2)" >> $GITHUB_ENV
         
-      - name: Set up Git
+      - name: Set up Gitee
         run: |
-          git config --global user.name "yangdavid988"
-          git config --global user.email "david_yang@realsil.com.cn"
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
         
       - name: Mirror to Gitee        
         run: |              
             git remote add gitee https://${{ github.repository_owner }}:${{ secrets.GITEE_TOKEN }}@gitee.com/${{ github.repository_owner }}/${{ env.REPO_NAME }}.git 
-            git push gitee HEAD:refs/heads/main --force
 
       - name: Push to Gitee only       
         run: |  
