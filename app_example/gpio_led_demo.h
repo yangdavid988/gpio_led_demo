@@ -2,7 +2,6 @@
 #define _GPIO_LDE_DEMO_H_
 
 #include "ameba_soc.h"
-// #include "ameba_gpio.h"
 #include "os_wrapper.h"
 #include <stdio.h>
 #include "platform_autoconf.h"
