@@ -30,10 +30,13 @@ jobs:
         
       - name: Mirror to Gitee        
         run: |              
-            git remote add gitee https://${{ github.repository_owner }}:${{ secrets.GITEE_TOKEN }}@gitee.com/${{ github.repository_owner }}/${{ env.REPO_NAME }}.git        
+            git remote add gitee https://${{ github.repository_owner }}:${{ secrets.GITEE_TOKEN }}@gitee.com/${{ github.repository_owner }}/${{ env.REPO_NAME }}.git 
+            git push gitee HEAD:refs/heads/main --force
+
       - name: Push to Gitee only       
         run: |  
+          continue-on-error: true
           git add .
           git commit -m "automated sync from github"
           git push --mirror --force gitee
-          continue-on-error: true
+          
