@@ -18,7 +18,7 @@ jobs:
               ref: main
               fetch-depth: 0
       - name: Debug GITEE_TOKEN
-        run: echo "TOKEN_LENGTH=${#${{ github.repository_owner }}}"    
+        run: echo "TOKEN_LENGTH=${#GITEE_TOKEN}"   
             
       - name: Get REPO_NAME
         run: echo "REPO_NAME=$(echo ${{ github.repository }} | cut -d'/' -f2)" >> $GITHUB_ENV
