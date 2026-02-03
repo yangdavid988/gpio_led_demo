@@ -6,7 +6,7 @@
   
 
 - 📎 EVB Link [🛒 淘宝](https://item.taobao.com/item.htm?id=904981157046)   |[📦 Amazon](https://www.amazon.com/-/zh/dp/B0FB33DT2C/)
-- 📄 [Chip Details](https://riot.realmcu.com/cn/module/index.html)
+- 📄 [Chip Details](https://aiot.realmcu.com/cn/module/index.html)
 - 📚 [GPIO Document](https://aiot.realmcu.com/cn/latest/rtos/peripherals/gpio/index.html)
 
 ### Features
