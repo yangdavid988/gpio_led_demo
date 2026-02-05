@@ -2,7 +2,7 @@
 
 ### Ameba RTL8721Dx GPIO 控制LED实现1s 流水显示示例（free_rtos）
 
-🔹 这是一个基于 RTL8721Dx 系列 SoC 的“LED GPIO控制”示例。该程序展示通过GPIO  配置io输出让LED 灯闪烁的效果，因为EVB上面板载对应sRGB 灯的pin与GPIO对应IO相同，所以即使不连接外部LED 灯珠，从EVB板载LED上面也可以看到效果。
+🔹 这是一个基于 RTL8721Dx 系列 SoC 的“LED GPIO控制”示例。该程序展示通过GPIO  配置io输出让LED 灯闪烁的效果，因为EVB上面板载对应RGB 灯的pin与GPIO对应IO相同，所以即使不连接外部LED 灯珠，从EVB板载LED上面也可以看到效果。
 
 - 📎 开发板链接  [🛒 淘宝](https://item.taobao.com/item.htm?id=904981157046)   |[📦 Amazon](https://www.amazon.com/-/zh/dp/B0FB33DT2C/)
 - 📄 [芯片详情](https://aiot.realmcu.com/cn/module/index.html)
